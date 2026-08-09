@@ -207,9 +207,9 @@
   transform: translateY(-2px);
 }
 
-/* 文章内普通渐变链接 默认紫蓝 */
+/* 文章链接渐变文字 */
 #article-container a:not(.gradient-btn) {
-  background: linear-gradient(var(--link-gradient-angle,135deg),var(--g1,#667eea),var(--g2,#764ba2));
+  background: linear-gradient(135deg,var(--g1,#667eea),var(--g2,#764ba2));
   -webkit-background-clip: text;
   color: transparent !important;
   font-weight: bold;
@@ -219,26 +219,34 @@
   text-decoration: underline;
 }
 
-/* 配色选择面板样式 */
-.gradient-color-selector{
+/* 拾色面板样式 */
+.gradient-picker-box{
   display:flex;
-  gap:10px;
-  margin:16px 0;
+  align-items:center;
+  gap:12px;
+  margin:18px 0;
+  flex-wrap:wrap;
 }
-.color-swatch{
-  width:32px;
-  height:32px;
-  border-radius:8px;
+.color-input-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.color-input-item label{
+  font-size:14px;
+}
+input[type="color"]{
+  width:36px;
+  height:36px;
+  border:none;
+  border-radius:6px;
   cursor:pointer;
-  border:2px solid transparent;
-  transition:0.2s;
 }
-.color-swatch.active{
-  border-color:#444;
-  transform:scale(1.1);
-}
-html[data-theme="dark"] .color-swatch.active{
-  border-color:#fff;
+.reset-gradient{
+  padding:6px 12px;
+  border-radius:6px;
+  border:none;
+  cursor:pointer;
 }
 </style>
 <meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
@@ -329,8 +337,8 @@ queueMicrotask(() => {
   );
 });</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="music"></div><script>var visitorMail = "";
 </script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script>
-// 文章内外部链接强制新窗口打开
 document.addEventListener('DOMContentLoaded',function(){
+  // 外部链接新标签打开
   let links = document.querySelectorAll('#article-container a:not(.gradient-btn)');
   links.forEach(link=>{
     let href = link.getAttribute('href');
@@ -340,42 +348,45 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   })
 
-  // 渐变配色方案
-  const gradientSets = [
-    {g1:'#667eea',g2:'#764ba2',name:'紫蓝'},
-    {g1:'#f093fb',g2:'#f5576c',name:'粉紫'},
-    {g1:'#4facfe',g2:'#00f2fe',name:'浅青蓝'},
-    {g1:'#43e97b',g2:'#38f9d7',name:'青绿色'},
-    {g1:'#fa709a',g2:'#fee140',name:'暖橙粉'},
-    {g1:'#ff6b6b',g2:'#feca57',name:'橙红'}
-  ]
   const root = document.documentElement;
-  // 读取本地保存配色
-  const saveIndex = localStorage.getItem('linkGradientIndex') || 0;
-  applyGradient(saveIndex);
+  const defaultC1 = "#667eea";
+  const defaultC2 = "#764ba2";
+  // 读取本地缓存颜色
+  let c1 = localStorage.getItem("grad_c1") || defaultC1;
+  let c2 = localStorage.getItem("grad_c2") || defaultC2;
 
-  function applyGradient(index){
-    const set = gradientSets[index];
-    root.style.setProperty('--g1',set.g1);
-    root.style.setProperty('--g2',set.g2);
-    localStorage.setItem('linkGradientIndex',index);
-    document.querySelectorAll('.color-swatch').forEach((el,i)=>{
-      el.classList.toggle('active',i==index);
-    })
+  function setColor(g1,g2){
+    root.style.setProperty('--g1',g1);
+    root.style.setProperty('--g2',g2);
+    localStorage.setItem("grad_c1",g1);
+    localStorage.setItem("grad_c2",g2);
   }
+  setColor(c1,c2);
 
-  // 渲染色块面板
-  const container = document.querySelector('.gradient-color-selector');
-  if(container){
-    container.innerHTML = '';
-    gradientSets.forEach((set,i)=>{
-      const div = document.createElement('div');
-      div.className = 'color-swatch';
-      div.style.background = `linear-gradient(135deg,${set.g1},${set.g2})`;
-      div.onclick = ()=>applyGradient(i);
-      if(i == saveIndex) div.classList.add('active');
-      container.appendChild(div);
-    })
+  const pickerWrap = document.querySelector(".gradient-picker-box");
+  if(pickerWrap){
+    pickerWrap.innerHTML = `
+      <div class="color-input-item">
+        <label>起始色</label>
+        <input type="color" id="colorStart" value="${c1}">
+      </div>
+      <div class="color-input-item">
+        <label>结束色</label>
+        <input type="color" id="colorEnd" value="${c2}">
+      </div>
+      <button class="reset-gradient">恢复默认紫蓝</button>
+    `;
+    const startInput = document.getElementById("colorStart");
+    const endInput = document.getElementById("colorEnd");
+    const resetBtn = document.querySelector(".reset-gradient");
+
+    startInput.oninput = ()=> setColor(startInput.value, endInput.value);
+    endInput.oninput = ()=> setColor(startInput.value, endInput.value);
+    resetBtn.onclick = ()=>{
+      startInput.value = defaultC1;
+      endInput.value = defaultC2;
+      setColor(defaultC1, defaultC2);
+    }
   }
 })
 </script>

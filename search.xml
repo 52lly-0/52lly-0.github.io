@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<div class="gradient-picker-box"></div> <p> 🔘<br><a class="gradient-btn" href="https://www.baidu.com" target="_blank">百度</a></p><br><br><p> 🔗<br><a href="https://www.youku.com/">优酷</a></p><div class="video-container">[up主专用，视频内嵌代码贴在这]</div><style>.video-container {    position: relative;    width: 100%;    padding-top: 56.25%; /* 16:9 aspect ratio (height/width = 9/16 * 100%) */}.video-container iframe {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;}</style>]]></content>
       
       
+      <categories>
+          
+          <category> 节点 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -23,6 +29,12 @@
       
         <content type="html"><![CDATA[<div class="gradient-picker-box"></div><p><a class="gradient-btn" href="https://iqiyi.com" target="_blank">爱奇艺</a><br><a class="gradient-btn" href="https://youku.com" target="_blank">优酷</a><br><a class="gradient-btn" href="https://v.qq.com" target="_blank">腾讯视频</a><br><a class="gradient-btn" href="https://mgtv.com" target="_blank">芒果TV</a><br><a class="gradient-btn" href="https://tv.sohu.com/" target="_blank">搜狐视频</a><br><a class="gradient-btn" href="https://m.pptv.com" target="_blank">PPTV</a></p><br><br><p><a href="https://iqiyi.com/">爱奇艺</a><br><a href="https://youku.com/">优酷</a><br><a href="https://v.qq.com/">腾讯视频</a><br><a href="https://mgtv.com/">芒果TV</a><br><a href="https://tv.sohu.com/">搜狐视频</a><br><a href="https://m.pptv.com/">PPTV</a></p><div class="video-container">[up主专用，视频内嵌代码贴在这]</div><style>.video-container {    position: relative;    width: 100%;    padding-top: 56.25%; /* 16:9 aspect ratio (height/width = 9/16 * 100%) */}.video-container iframe {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;}</style>]]></content>
       
+      
+      <categories>
+          
+          <category> 技术类分享 </category>
+          
+      </categories>
       
       
     </entry>
@@ -44,12 +56,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> 教程 </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -64,18 +70,10 @@
       
       <categories>
           
-          <category> 技术类分享 </category>
+          <category> 教程 </category>
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> 教程 </tag>
-            
-            <tag> 免费 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -89,12 +87,12 @@
         <content type="html"><![CDATA[<p>在此贴上博主博客，感谢🙏<br><a class="gradient-btn" href="https://blog.cmliussss.com/p/HexoBlogNo1/ " target="_blank">🚀 博客</a></p><style>.gradient-btn{  display:inline-block;  padding:9px 20px;  border-radius:10px;  background:linear-gradient(135deg,#667eea,#764ba2);  color:#fff !important;  font-weight:bold;  text-decoration:none;  transition: all 0.3s;}.gradient-btn:hover{  opacity:0.85;  transform: translateY(-2px);}</style><div class="video-container"><iframe width="850" height="478" src="https://www.youtube.com/embed/GtYcFZ55GJI" title="【Hexo博客系列】No.1 搭建Hexo博客，快速简洁高效，零成本搭建个人博客：Hexo + GitHub Pages + Cloudflare Pages 完整指南 #blog" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><style>.video-container {    position: relative;    width: 100%;    padding-top: 56.25%; /* 16:9 aspect ratio (height/width = 9/16 * 100%) */}.video-container iframe {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;}</style>]]></content>
       
       
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
       
-        <tags>
-            
-            <tag> 技术类分享 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -110,16 +108,10 @@
       
       <categories>
           
-          <category> 技术类分享 </category>
+          <category> 节点 </category>
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> 免费 </tag>
-            
-        </tags>
       
     </entry>
     
